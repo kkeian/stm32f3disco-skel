@@ -1,4 +1,4 @@
-ENTRY(_reset)
+ENTRY(reset_handler)
 
 MEMORY {
 	flash(rx) : ORIGIN = 0x8000000, LENGTH = 256k
