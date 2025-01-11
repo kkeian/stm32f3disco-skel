@@ -13,6 +13,7 @@ SECTIONS {
 		KEEP(*(.vector*))
 		*(.text*)
 		*(.rodata*)
+		_etext = . ;
 	} > flash
 
 	.bss (NOLOAD) :
