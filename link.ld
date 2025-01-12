@@ -31,7 +31,7 @@ SECTIONS {
 		_edata = . ;
 	} > sram AT > flash
 
-	.stack (NOLOAD) : ALIGN(8)
+	.stack (NOLOAD) : ALIGN(0x8)
 	{
 		/* align stack on 8 byte boundaries per AAPCS requirements */
 
@@ -61,7 +61,7 @@ SECTIONS {
 		*/
 		_sstack = .; /* Debug only */
 		. = . + STACK_SZ;
-		. = ALIGN(8); /* this is effectual though and pads the end of this output
+		. = ALIGN(0x8); /* this is effectual though and pads the end of this output
 					  section before moving onto the next output section */
 		_estack = .;
 	} > sram
