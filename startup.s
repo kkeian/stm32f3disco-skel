@@ -1,8 +1,9 @@
 /* use new unified syntax which uses new encoding for ARM equivalent instructions under Thumb-2 */
 .syntax unified
 
-msp: .word _etext
 	.text
+msp: .word _etext
+	
 	.global reset
 reset:
 	push {r7}
@@ -26,9 +27,7 @@ reset:
 	512 = desired byte boundary
 	log_2(512) = 9 = # of lower order 0's in 512 */
 	.align 9
-/* as defined in processor Ref Manual:
-
-*/
+/* as defined in processor Ref Manual:*/
 	.global vector_table
 vector_table:
 	.word msp
