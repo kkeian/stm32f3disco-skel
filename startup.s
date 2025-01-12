@@ -1,6 +1,13 @@
 /* use new unified syntax which uses new encoding for ARM equivalent instructions under Thumb-2 */
 .syntax unified
 
+msp: .word _etext
+	.text
+	.global reset
+reset:
+	push {r7}
+	add r7, sp, #0
+
 	.section .vector
 	/* vector table must be "naturally aligned" to a power of 2 with
 	the value being >= # exceptions supported * 4. "naturally aligned"
@@ -22,14 +29,15 @@
 /* as defined in processor Ref Manual:
 
 */
-vectors:
+	.global vector_table
+vector_table:
 	.word msp
 	.word reset
-	.word nmi
+/*	.word nmi
 	.word hard_fault
 	.word mem_manage
 	.word bus_fault
 	.word usage_fault
-
+*/
 
 /* always end files in newline per GNU as(1) docs */
